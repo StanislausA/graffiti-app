@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from 'react-dom';
 import App from './App';
 import './styles/index.css';
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 
 const colors = {
   pallette: {
@@ -14,11 +13,7 @@ const colors = {
   }
 };
 
-const theme = extendTheme(colors);
-
 render(
-  <ChakraProvider theme={theme}>
-    <App />
-  </ChakraProvider>,
+  <App />,
   document.getElementById('root')
 );

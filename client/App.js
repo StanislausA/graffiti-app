@@ -1,4 +1,3 @@
-import { Heading } from '@chakra-ui/react';
 import React from 'react';
 import './styles/app.css'
 
@@ -6,7 +5,7 @@ const App = () => {
 
   return (
     <>
-      <Heading fontSize='xl'>Graffiti-app</Heading>
+      <h1>Graffiti-app</h1>
     </>
   );
 }
