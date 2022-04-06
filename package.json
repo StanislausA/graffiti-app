@@ -4,18 +4,33 @@
   "description": "Project attempts to employ techniques/concepts/theories from the field of Oral History in order to contribute present-day digitized “archival” records for the future.",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "build": "webpack --node-env production",
-    "dev": "nodemon server/server.js",
+    "dev": "nodemon server/server.js & webpack serve --node-env development --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Anthony Stanislaus",
   "license": "MIT",
   "dependencies": {
+    "@chakra-ui/react": "^1.8.7",
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
     "express": "^4.17.3",
-    "firebase": "^9.6.10"
+    "firebase": "^9.6.10",
+    "framer-motion": "^6.2.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.4",
     "dotenv": "^16.0.0",
-    "nodemon": "^2.0.15"
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.15",
+    "webpack": "^5.71.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.0"
   }
 }

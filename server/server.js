@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const controller = require('./controller');
 require('dotenv').config();
@@ -7,7 +8,11 @@ const PORT = process.env.PORT;
 
 APP.use(express.json());
 
-APP.get('/', (request, response) => response.send('<h1>Welcome...</h1>'));
+APP.use('/build', express.static(path.resolve(__dirname, '../build')));
+
+APP.get('/', (request, response) => {
+  return response.status(200).sendFile(path.resolve(__dirname, '../index.html'));
+});
 
 // GET snippets
 APP.get('/snippets', controller.getSnippets, (request, response) => {
