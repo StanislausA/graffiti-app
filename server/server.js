@@ -8,11 +8,13 @@ const PORT = process.env.PORT;
 
 APP.use(express.json());
 
-APP.use('/build', express.static(path.resolve(__dirname, '../build')));
+if (process.env.NODE_ENV === 'production') {
+  APP.use('/build', express.static(path.resolve(__dirname, '../build')));
 
-APP.get('/', (request, response) => {
-  return response.status(200).sendFile(path.resolve(__dirname, '../index.html'));
-});
+  APP.get('/', (request, response) => {
+    return response.status(200).sendFile(path.resolve(__dirname, '../index.html'));
+  });
+}
 
 // GET snippets
 APP.get('/snippets', controller.getSnippets, (request, response) => {
