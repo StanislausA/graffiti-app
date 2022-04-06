@@ -4,7 +4,7 @@
   "description": "Project attempts to employ techniques/concepts/theories from the field of Oral History in order to contribute present-day digitized “archival” records for the future.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/server.js",
+    "start": "NODE_ENV=production nodemon server/server.js",
     "prod": "webpack --node-env production",
     "dev": "webpack serve --node-env development --open",
     "test": "echo \"Error: no test specified\" && exit 1",

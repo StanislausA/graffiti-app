@@ -8,7 +8,7 @@ const PORT = process.env.PORT;
 
 APP.use(express.json());
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV == 'production') {
   APP.use('/build', express.static(path.resolve(__dirname, '../build')));
 
   APP.get('/', (request, response) => {
