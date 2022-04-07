@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './styles/app.css';
 import Snippet from './components/Snippet';
-import { testData } from '../database/mockstore';
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -14,25 +13,55 @@ const App = () => {
       .get('/snippets')
       .then(({ data }) => {
         setData(data);
+        console.log(data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [text]);
 
-  const stateReady = data ? (
-    data.map((doc, idx) => (
-      <Snippet
-        key={`doc${idx * 99}data`}
-        content={doc.content}
-        date={doc.date.seconds}
-      />
-    ))
-  ) : (
-    <h1>Loading...</h1>
-  );
+  const stateReady = () => {
+    return data ? (
+      data.map((doc, idx) => (
+        <Snippet
+          key={`doc${idx * 99}data`}
+          content={doc.content}
+          date={doc.date.seconds}
+        />
+      ))
+    ) : (
+      <h1>Loading...</h1>
+    );
+  }
 
   const errorReady = error
     ? (<div className='error'>{ error }</div>)
     : false;
+
+    const textReady = text ? false : true;
+
+  // const createSnippet = (event) => {
+  //   event.preventDefault();
+  //   const snippet = text.trim();
+  //   if (snippet == '') {
+  //     setText('');
+  //     setError('Text input invalid...');
+  //     setTimeout(() => setError(null), 4000);
+  //     return;
+  //   }
+  //   axios
+  //     .post('/snippets', { snippet })
+  //     .then((response) => {
+  //       console.log(response);
+  //       setText('');
+  //       const updatedState = data.concat(snippet);
+  //       setData(updatedState);
+  //     })
+  //     .catch((error) => {
+  //       setError(`Error caught: ${ error }`);
+  //       setTimeout(() => setError(null), 4000);
+  //       console.log('Error caught:', error);
+  //     }
+  //   );
+  // };
 
   const createSnippet = (event) => {
     event.preventDefault();
@@ -43,19 +72,29 @@ const App = () => {
       setTimeout(() => setError(null), 4000);
       return;
     }
+    const newSnippet = {
+      id: data.length + 1,
+      message: snippet,
+      date: {
+        seconds: Date.now(),
+        nanoseconds: 0
+      }
+    };
+
     axios
-      .post('/snippets', { snippet })
+      .post('/snippets', newSnippet)
       .then((response) => {
-        console.log(response);
-        setText('');
-        const updatedState = { snippet, ...data };
+        const updatedState = data.concat(newSnippet);
         setData(updatedState);
+        setText('');
       })
       .catch((error) => {
         setError(`Error caught: ${ error }`);
+        setText('');
         setTimeout(() => setError(null), 4000);
         console.log('Error caught:', error);
-      });
+      }
+    );
   };
 
   return (
@@ -70,12 +109,14 @@ const App = () => {
               maxLength="107"
               cols="70"
               rows="3"
+              value={ text }
               onChange={(e) => setText(e.target.value)}
             />
             <button
               className="snippet-textarea-button"
               type="button"
               onClick={(e) => createSnippet(e)}
+              disabled={ textReady }
             >
               save
             </button>
@@ -89,7 +130,9 @@ const App = () => {
         </nav>
       </div>
       <main>
-        <div className="snippet-cards">{stateReady}</div>
+        <div className="snippet-cards">
+          { stateReady() }
+        </div>
         { errorReady }
       </main>
     </div>

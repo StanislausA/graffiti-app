@@ -2,7 +2,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, '/client/index.js'),
+  entry: {
+    'index': path.resolve(__dirname, '/client/index.js'),
+    'roadmap': path.resolve(__dirname, '/client/roadmap.js')
+  },
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
@@ -40,7 +43,7 @@ module.exports = {
     compress: true,
     proxy: {
       context: ['/snippets'],
-      target: 'http://localhost:3000' 
+      target: 'http://localhost:3001' 
     }
   },
   plugins: [new HtmlWebpackPlugin({

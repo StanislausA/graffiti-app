@@ -7,6 +7,7 @@
     "start": "nodemon server/server.js",
     "prod": "webpack --node-env production && NODE_ENV=production nodemon server/server.js",
     "dev": "webpack serve --node-env development --open",
+    "mock": "json-server -p3001 --watch database/mockstore.json",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm build/bundle.js"
   },
@@ -27,6 +28,7 @@
     "css-loader": "^6.7.1",
     "dotenv": "^16.0.0",
     "html-webpack-plugin": "^5.5.0",
+    "json-server": "^0.17.0",
     "nodemon": "^2.0.15",
     "style-loader": "^3.3.1",
     "webpack": "^5.71.0",

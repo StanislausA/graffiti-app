@@ -15,7 +15,7 @@
   width: 90%;
   padding: 15px 0;
   margin-bottom: 15px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(76, 84, 84);
   border-radius: 3px;
 }
 
@@ -91,7 +91,7 @@ header > h1:hover {
 
 nav {
   min-height: 5%;
-  padding-top: 15px;
+  padding: 15px 0;
   box-sizing: border-box;
 }
 
@@ -154,4 +154,33 @@ main {
   min-height: fit-content;
   transform: translateY(8px);
   color: rgb(174, 179, 218);
+}
+
+.error {
+  height: fit-content;
+  width: fit-content;
+  box-sizing: content-box;
+  padding: 8px 15px;
+  position: fixed;
+  left: 30px;
+  bottom: 30px;
+  border-radius: 5px;
+  background-color: rgba(255, 0, 0, 0.81);
+  color: rgba(29, 28, 28, 0.81);
+  animation: error-ease 5s ease-in-out infinite;
+}
+
+@keyframes error-ease {
+  from {opacity: 0;}
+  10% {opacity: .9;}
+  20% {opacity: .9;}
+  30% {opacity: .9;}
+  40% {opacity: .9;}
+  50% {opacity: .9;}
+  60% {opacity: .7;}
+  70% {opacity: .5;}
+  80% {opacity: .47;}
+  90% {opacity: .38;}
+  95% {opacity: .28;}
+  to {opacity: 0;}
 }
