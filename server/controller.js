@@ -12,21 +12,22 @@ controllers.getSnippets = async (request, response, next) => {
     response.locals.snippets = snippetList;
     return next();
   } catch (error) {
-    return next(handlers.createError('getDocs', 418, new Error('Error retrieving snippets.')))
+    return next(handlers.createError('getDocs', 418, new Error(`Error retrieving snippets: ${ snippetSnapshot }`)))
   }
 }
 
 controllers.postSnippet = async (request, response, next) => {
-  const message = request.body.message.trim();
+  const snippet = request.body.snippet.trim();
   
-  if (!message) return next(handlers.createError('postSnippet', 400, new Error('Invalid user inputs.')));
+  if (!snippet) return next(handlers.createError('postSnippet', 400, new Error('Invalid user inputs.')));
 
   try {
     const snippetsCollection = firestore.collection(database, 'snippets');
-    await firestore.addDoc(snippetsCollection, { content: message, date: firestore.Timestamp.now() });
+    const snippetDoc = await firestore.addDoc(snippetsCollection, { content: snippet, date: firestore.Timestamp.now() });
+    response.locals.snippet = snippetDoc;
     return next();
   } catch (error) {
-    return next(handlers.createError('addDoc', 500, new Error('Error creating snippet.')));
+    return next(handlers.createError('addDoc', 500, new Error(`Error creating snippet: ${ snippetDoc }`)));
   }
 }
 

@@ -10,20 +10,91 @@
 */
 
 #app {
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 90%;
+  padding-top: 15px;
 }
 
 header {
-  background-color: #A40606;
+  display: flex;
+  justify-content: space-between;
+  height: 10%;
+  box-sizing: border-box;
+  border: 2px solid blue;
+}
+
+header > h1 {
+  background-color: yellow;
+}
+
+.create-snippet {
+  
+}
+
+.snippet-textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.snippet-textarea-button {
+  padding: 5px 25px;
+  background-color: red;
 }
 
 nav {
+  min-height: 5%;
+  box-sizing: border-box;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-links > a {
+  height: 48%;
+  width: 48%;
+  text-align: center;
+  border: 1px solid gray;
+  border-radius: 5px;
+  text-decoration: none;
   background-color: #C9C8D0;
 }
 
 main {
-  background-color: #BEB7A4;
+  min-height: 80%;
+  box-sizing: border-box;
+}
+
+.snippet-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 400px);
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.snippet-card {
+  min-height: 100px;
+  min-width: 350px;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #ededed;
+}
+
+.snippet-content {
+  min-height: fit-content;
+  padding: 10px 5px 5px 10px;
+  transform: translateY(8px);
+}
+
+.snippet-date {
+  min-height: fit-content;
+  transform: translateY(8px);
 }

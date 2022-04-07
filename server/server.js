@@ -23,7 +23,7 @@ APP.get('/snippets', controller.getSnippets, (request, response) => {
 
 // CREATE snippet
 APP.post('/snippets', controller.postSnippet, (request, response) => {
-  return response.status(201).send('Snippet created!');
+  return response.status(201).json(response.locals.snippet);
 });
 
 // Unknown endpoint handler
