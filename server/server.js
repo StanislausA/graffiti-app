@@ -39,7 +39,6 @@ APP.use((error, request, response, next) => {
     }
   };
   const mergedError = Object.assign(defaultError, error);
-  console.log(mergedError);
   return response.status(mergedError.status).json(mergedError.message);
 });
 

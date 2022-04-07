@@ -7,6 +7,7 @@ import { testData } from '../database/mockstore';
 const App = () => {
   const [data, setData] = useState(null);
   const [text, setText] = useState('');
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
@@ -29,12 +30,17 @@ const App = () => {
     <h1>Loading...</h1>
   );
 
+  const errorReady = error
+    ? (<div className='error'>{ error }</div>)
+    : false;
+
   const createSnippet = (event) => {
     event.preventDefault();
     const snippet = text.trim();
-    if (snippet == undefined) {
+    if (snippet == '') {
       setText('');
-      // display error to user
+      setError('Text input invalid...');
+      setTimeout(() => setError(null), 4000);
       return;
     }
     axios
@@ -45,14 +51,18 @@ const App = () => {
         const updatedState = { snippet, ...data };
         setData(updatedState);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setError(`Error caught: ${ error }`);
+        setTimeout(() => setError(null), 4000);
+        console.log('Error caught:', error);
+      });
   };
 
   return (
     <div id="app">
       <div className="header-nav">
         <header>
-          <h1>Graffiti-App</h1>
+          <h1>GRAFFITI</h1>
           <div className="create-snippet">
             <textarea
               className="snippet-textarea"
@@ -80,6 +90,7 @@ const App = () => {
       </div>
       <main>
         <div className="snippet-cards">{stateReady}</div>
+        { errorReady }
       </main>
     </div>
   );

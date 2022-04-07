@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Inconsolata', monospace;
+  src: url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;500&display=swap');
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +18,7 @@ body, #root {
   height: 100%;
   box-sizing: border-box;
   background-color: rgb(76, 84, 84);
+  font-family: 'Inconsolata', monospace;
 }
 
 #root {

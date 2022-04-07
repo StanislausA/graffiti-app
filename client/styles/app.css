@@ -13,7 +13,8 @@
   display: flex;
   flex-direction: column;
   width: 90%;
-  padding-top: 15px;
+  padding: 15px 0;
+  margin-bottom: 15px;
   background-color: rgb(255, 255, 255);
   border-radius: 3px;
 }
@@ -25,7 +26,7 @@
   height: 120px;
   max-width: 1000px;
   border-radius: 10px;
-  background-color: rgb(76, 84, 84);
+  background-color: rgb(83, 92, 92);
 }
 
 header {
@@ -38,6 +39,11 @@ header > h1 {
   transform: translate(20px, 10px);
   align-self: center;
   color: rgb(255, 113, 91);
+}
+
+header > h1:hover {
+  text-shadow: 0 0 3px rgb(32, 7, 3);
+  cursor: pointer;
 }
 
 .create-snippet {
@@ -62,8 +68,25 @@ header > h1 {
   padding: 5px 25px;
   transform: translate(120px, -20px);
   border-radius: 10px;
+  border: 5px solid rgb(255, 113, 91);
+  box-shadow: 0 0 15px 2px rgb(255, 113, 91);
   background-color: rgb(255, 113, 91);
   color: rgb(227, 224, 224);
+  animation: textarea-button-ease 1.8s ease-in-out infinite;
+  animation-fill-mode: both;
+}
+
+.snippet-textarea-button:hover {
+  color: rgb(97, 108, 108);
+  cursor: pointer;
+}
+
+@keyframes textarea-button-ease {
+  0% {box-shadow: 0 0 15px 2px rgb(255, 113, 91);}
+  25% {box-shadow: 0 0 10px 2px rgb(207, 165, 159);}
+  50% {box-shadow: 0 0 15px 2px rgb(228, 208, 205);}
+  75% {box-shadow: 0 0 15px 2px rgb(207, 165, 159);}
+  100% {box-shadow: 0 0 15px 2px rgb(255, 113, 91);}
 }
 
 nav {
@@ -90,6 +113,11 @@ nav {
   color: rgb(227, 224, 224);
 }
 
+.nav-links > a:hover {
+  color: rgb(80, 196, 182);
+  box-shadow: 0 0 2px 1px rgb(80, 196, 182);
+}
+
 main {
   min-height: 80%;
   box-sizing: border-box;
@@ -112,6 +140,8 @@ main {
   border-radius: 5px;
   box-shadow: 3px 5px 8px rgb(30, 168, 150);
   background-color: rgb(255, 255, 255);
+  font-weight: 100;
+  font-size: 14px;
 }
 
 .snippet-content {
