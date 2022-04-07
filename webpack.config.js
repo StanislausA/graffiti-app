@@ -39,8 +39,8 @@ module.exports = {
     headers: { 'Access-Control-Allow-Origin': '*' },
     compress: true,
     proxy: {
-      context: ['/test', '/snippets'],
-      target: 'http://localhost:3000/' 
+      context: ['/snippets'],
+      target: 'http://localhost:3000' 
     }
   },
   plugins: [new HtmlWebpackPlugin({

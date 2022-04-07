@@ -9,16 +9,15 @@ const App = () => {
   const [ data, setData ] = useState(null);
   const [ text, setText ] = useState('');
 
-  // useEffect(() => {
-  //   axios.get('/snippets')
-  //     .then(({ data }) => {
-  //       const { snippets } = data;
-  //       setData(snippets);
-  //       console.log(snippets);
-  //     })
-  //     .catch(error => console.log(error));
-  // }, []);
-  useEffect(() => setData(testData), []);
+  useEffect(() => {
+    axios.get('/snippets')
+      .then(({ data }) => {
+        const { snippets } = data;
+        setData(snippets);
+        console.log(snippets);
+      })
+      .catch(error => console.log(error));
+  }, []);
 
   const stateReady = data
     ? data.map((doc, idx) =>
@@ -40,8 +39,9 @@ const App = () => {
     axios.post('/snippets', { snippet })
       .then(response => {
         console.log(response);
-        const updatedState = { snippet, ...data };
-        setData(updatedState);
+        setText('');
+        // const updatedState = { snippet, ...data };
+        // setData(updatedState);
       })
       .catch(error => console.log(error));
   }

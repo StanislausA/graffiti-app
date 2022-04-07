@@ -12,7 +12,7 @@ controllers.getSnippets = async (request, response, next) => {
     response.locals.snippets = snippetList;
     return next();
   } catch (error) {
-    return next(handlers.createError('getDocs', 418, new Error(`Error retrieving snippets: ${ snippetSnapshot }`)))
+    return next(handlers.createError('getDocs', 418, new Error(`Error retrieving snippets: ${ error }`)))
   }
 }
 
@@ -27,7 +27,7 @@ controllers.postSnippet = async (request, response, next) => {
     response.locals.snippet = snippetDoc;
     return next();
   } catch (error) {
-    return next(handlers.createError('addDoc', 500, new Error(`Error creating snippet: ${ snippetDoc }`)));
+    return next(handlers.createError('addDoc', 500, new Error(`Error creating snippet: ${ error }`)));
   }
 }
 

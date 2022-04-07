@@ -18,7 +18,7 @@ if (process.env.NODE_ENV == 'production') {
 
 // GET snippets
 APP.get('/snippets', controller.getSnippets, (request, response) => {
-  return response.status(200).json(response.locals);
+  return response.status(200).json(response.locals.snippets);
 });
 
 // CREATE snippet
