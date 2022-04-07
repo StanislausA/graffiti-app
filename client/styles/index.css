@@ -6,18 +6,17 @@
 
 root, html {
   width: 100vw;
-  height: 100vh;
 }
 
 body, #root {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  background-color: #d2d1dc;
+  background-color: rgb(76, 84, 84);
 }
 
 #root {
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding: 0 10px;
 }

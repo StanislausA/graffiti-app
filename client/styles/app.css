@@ -12,21 +12,32 @@
 #app {
   display: flex;
   flex-direction: column;
-  height: 100%;
   width: 90%;
   padding-top: 15px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 3px;
+}
+
+.header-nav {
+  align-self: center;
+  position: sticky;
+  top: 0;
+  height: 120px;
+  max-width: 1000px;
+  border-radius: 10px;
+  background-color: rgb(76, 84, 84);
 }
 
 header {
   display: flex;
   justify-content: space-between;
-  height: 10%;
   box-sizing: border-box;
-  border: 2px solid blue;
 }
 
 header > h1 {
-  background-color: yellow;
+  transform: translate(20px, 10px);
+  align-self: center;
+  color: rgb(255, 113, 91);
 }
 
 .create-snippet {
@@ -35,17 +46,29 @@ header > h1 {
 
 .snippet-textarea {
   padding: 8px;
+  transform: translate(40px, 10px);
   border: 1px solid #ccc;
   border-radius: 8px;
+  resize: none;
+}
+
+.snippet-textarea:focus {
+  outline: none;
+  border:1px solid rgb(255, 113, 91);
+  box-shadow: 0 0 10px rgb(80, 196, 182);
 }
 
 .snippet-textarea-button {
   padding: 5px 25px;
-  background-color: red;
+  transform: translate(120px, -20px);
+  border-radius: 10px;
+  background-color: rgb(255, 113, 91);
+  color: rgb(227, 224, 224);
 }
 
 nav {
   min-height: 5%;
+  padding-top: 15px;
   box-sizing: border-box;
 }
 
@@ -60,15 +83,17 @@ nav {
   height: 48%;
   width: 48%;
   text-align: center;
-  border: 1px solid gray;
+  /* border: 1px solid rgb(232, 218, 216); */
   border-radius: 5px;
   text-decoration: none;
-  background-color: #C9C8D0;
+  box-shadow: 0 0 2px 1px rgb(218, 207, 206);
+  color: rgb(227, 224, 224);
 }
 
 main {
   min-height: 80%;
   box-sizing: border-box;
+  padding-top: 10px;
 }
 
 .snippet-cards {
@@ -85,7 +110,8 @@ main {
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
-  background-color: #ededed;
+  box-shadow: 3px 5px 8px rgb(30, 168, 150);
+  background-color: rgb(255, 255, 255);
 }
 
 .snippet-content {
@@ -97,4 +123,5 @@ main {
 .snippet-date {
   min-height: fit-content;
   transform: translateY(8px);
+  color: rgb(174, 179, 218);
 }
