@@ -35,13 +35,16 @@ header {
   box-sizing: border-box;
 }
 
-header > h1 {
+header > a {
   transform: translate(20px, 10px);
   align-self: center;
   color: rgb(255, 113, 91);
+  font-size: x-large;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
-header > h1:hover {
+header > a:hover {
   text-shadow: 0 0 3px rgb(32, 7, 3);
   cursor: pointer;
 }
@@ -166,7 +169,7 @@ main {
   bottom: 30px;
   border-radius: 5px;
   background-color: rgba(255, 0, 0, 0.81);
-  color: rgba(29, 28, 28, 0.81);
+  color: rgba(255, 255, 255, 0.81);
   animation: error-ease 5s ease-in-out infinite;
 }
 

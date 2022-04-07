@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import './styles/app.css';
+import Snippets from './components/Snippets';
 import Snippet from './components/Snippet';
+import Roadmap from './components/Roadmap';
+import About from './components/About';
+import Nav from './components/Nav';
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -13,10 +18,9 @@ const App = () => {
       .get('/snippets')
       .then(({ data }) => {
         setData(data);
-        console.log(data);
       })
       .catch((error) => console.log(error));
-  }, [text]);
+  }, []);
 
   const stateReady = () => {
     return data ? (
@@ -32,11 +36,9 @@ const App = () => {
     );
   }
 
-  const errorReady = error
-    ? (<div className='error'>{ error }</div>)
-    : false;
+  const errorReady = error ? (<div className='error'>{ error }</div>) : false;
 
-    const textReady = text ? false : true;
+  const textReady = text ? false : true;
 
   // const createSnippet = (event) => {
   //   event.preventDefault();
@@ -99,42 +101,24 @@ const App = () => {
 
   return (
     <div id="app">
-      <div className="header-nav">
-        <header>
-          <h1>GRAFFITI</h1>
-          <div className="create-snippet">
-            <textarea
-              className="snippet-textarea"
-              placeholder="write on the wall..."
-              maxLength="107"
-              cols="70"
-              rows="3"
-              value={ text }
-              onChange={(e) => setText(e.target.value)}
+      <Nav
+        text={ text }
+        textReady={ textReady }
+        setText={ setText }
+        createSnippet={ createSnippet }
+      />
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <Snippets
+              stateReady={ stateReady }
+              errorReady={ errorReady }
             />
-            <button
-              className="snippet-textarea-button"
-              type="button"
-              onClick={(e) => createSnippet(e)}
-              disabled={ textReady }
-            >
-              save
-            </button>
-          </div>
-        </header>
-        <nav>
-          <div className="nav-links">
-            <a href="#">About</a>
-            <a href="#">Roadmap</a>
-          </div>
-        </nav>
-      </div>
-      <main>
-        <div className="snippet-cards">
-          { stateReady() }
-        </div>
-        { errorReady }
-      </main>
+        } />
+        <Route path='/about' element={ <About /> } />
+        <Route path='/roadmap' element={ <Roadmap /> } />
+      </Routes>
     </div>
   );
 };

@@ -3,8 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    'index': path.resolve(__dirname, '/client/index.js'),
-    'roadmap': path.resolve(__dirname, '/client/roadmap.js')
+    'index': path.resolve(__dirname, '/client/index.js')
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -32,6 +31,7 @@ module.exports = {
   devServer: {
     host: 'localhost',
     port: 8080,
+    historyApiFallback: true,
     client: {
       overlay: true
     },

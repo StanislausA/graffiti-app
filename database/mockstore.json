@@ -151,30 +151,6 @@
         "nanoseconds": 0
       },
       "content": "Testing for whether this is live..."
-    },
-    {
-      "id": 20,
-      "message": "Not sure...",
-      "date": {
-        "seconds": 1649346514137,
-        "nanoseconds": 0
-      }
-    },
-    {
-      "id": 21,
-      "message": "dasfadsf",
-      "date": {
-        "seconds": 1649347207681,
-        "nanoseconds": 0
-      }
-    },
-    {
-      "id": 22,
-      "message": "Strange happenings are now occurring...",
-      "date": {
-        "seconds": 1649347457227,
-        "nanoseconds": 0
-      }
     }
   ]
 }
