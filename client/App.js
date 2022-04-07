@@ -40,31 +40,6 @@ const App = () => {
 
   const textReady = text ? false : true;
 
-  // const createSnippet = (event) => {
-  //   event.preventDefault();
-  //   const snippet = text.trim();
-  //   if (snippet == '') {
-  //     setText('');
-  //     setError('Text input invalid...');
-  //     setTimeout(() => setError(null), 4000);
-  //     return;
-  //   }
-  //   axios
-  //     .post('/snippets', { snippet })
-  //     .then((response) => {
-  //       console.log(response);
-  //       setText('');
-  //       const updatedState = data.concat(snippet);
-  //       setData(updatedState);
-  //     })
-  //     .catch((error) => {
-  //       setError(`Error caught: ${ error }`);
-  //       setTimeout(() => setError(null), 4000);
-  //       console.log('Error caught:', error);
-  //     }
-  //   );
-  // };
-
   const createSnippet = (event) => {
     event.preventDefault();
     const snippet = text.trim();
@@ -74,30 +49,55 @@ const App = () => {
       setTimeout(() => setError(null), 4000);
       return;
     }
-    const newSnippet = {
-      id: data.length + 1,
-      message: snippet,
-      date: {
-        seconds: Date.now(),
-        nanoseconds: 0
-      }
-    };
-
     axios
-      .post('/snippets', newSnippet)
+      .post('/snippets', { snippet })
       .then((response) => {
-        const updatedState = data.concat(newSnippet);
-        setData(updatedState);
+        console.log(response);
         setText('');
+        const updatedState = data.concat(snippet);
+        setData(updatedState);
       })
       .catch((error) => {
         setError(`Error caught: ${ error }`);
-        setText('');
         setTimeout(() => setError(null), 4000);
         console.log('Error caught:', error);
       }
     );
   };
+
+  // const createSnippet = (event) => {
+  //   event.preventDefault();
+  //   const snippet = text.trim();
+  //   if (snippet == '') {
+  //     setText('');
+  //     setError('Text input invalid...');
+  //     setTimeout(() => setError(null), 4000);
+  //     return;
+  //   }
+  //   const newSnippet = {
+  //     id: data.length + 1,
+  //     message: snippet,
+  //     date: {
+  //       seconds: Date.now(),
+  //       nanoseconds: 0
+  //     }
+  //   };
+
+  //   axios
+  //     .post('/snippets', newSnippet)
+  //     .then((response) => {
+  //       const updatedState = data.concat(newSnippet);
+  //       setData(updatedState);
+  //       setText('');
+  //     })
+  //     .catch((error) => {
+  //       setError(`Error caught: ${ error }`);
+  //       setText('');
+  //       setTimeout(() => setError(null), 4000);
+  //       console.log('Error caught:', error);
+  //     }
+  //   );
+  // };
 
   return (
     <div id="app">

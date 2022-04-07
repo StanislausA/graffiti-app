@@ -43,7 +43,7 @@ module.exports = {
     compress: true,
     proxy: {
       context: ['/snippets'],
-      target: 'http://localhost:3001' 
+      target: 'http://localhost:3000' 
     }
   },
   plugins: [new HtmlWebpackPlugin({

@@ -187,3 +187,44 @@ main {
   95% {opacity: .28;}
   to {opacity: 0;}
 }
+
+#about-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-sizing: border-box;
+  height: 78vh;
+  padding: 20px;
+}
+
+section > label {
+  font-weight: 500;
+  font-size: x-large;
+}
+
+.purpose, .solution, .challenges {
+  height: 60%;
+  padding: 15px;
+  font-weight: 100;
+  font-size: large;
+  align-self: center;
+}
+
+li {
+  margin-left: 20px;
+}
+
+.purpose {
+  margin: 20px;
+  background-color: mediumslateblue;
+}
+
+.solution {
+  margin: 20px;
+  background-color: cornflowerblue;
+}
+
+.challenges {
+  margin: 20px;
+  background-color: crimson;
+}
